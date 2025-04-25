@@ -38,4 +38,4 @@ RUN npm run build
 EXPOSE ${PORT}
 
 # Применяем миграции и запускаем приложение
-CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
+CMD ["sh", "-c", "npx prisma db pull && npx prisma migrate deploy && node dist/main"]
