@@ -1,0 +1,16 @@
+services:
+  db:
+    image: postgres:15 # можно указать нужную версию
+    container_name: pg_container # опциональное имя контейнера
+    restart: unless-stopped # рестарт при падении
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    ports:
+      - "5435:5432" # проброс порта для доступа с хоста
+    volumes:
+      - pgdata:/var/lib/postgresql/data # сохраняем данные вне контейнера
+
+volumes:
+  pgdata:
