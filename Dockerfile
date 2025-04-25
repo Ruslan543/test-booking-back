@@ -38,4 +38,4 @@ RUN npm run build
 EXPOSE 4000
 
 # Применяем миграции и запускаем приложение
-CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy && node dist/main"]
+CMD ["sh", "-c", "npx prisma generate && npx prisma migrate dev --name init && node dist/main"]
