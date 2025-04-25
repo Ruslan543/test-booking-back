@@ -35,7 +35,7 @@ RUN npx prisma generate
 RUN npm run build
 
 # Указываем порт, который будет использоваться (Render ожидает порт из переменной окружения)
-EXPOSE ${PORT}
+EXPOSE 4000
 
 # Применяем миграции и запускаем приложение
-CMD ["sh", "-c", "npx prisma migrate reset --force && npx prisma migrate deploy && node dist/main"]
+CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy && node dist/main"]
