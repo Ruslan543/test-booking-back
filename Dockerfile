@@ -4,9 +4,8 @@ WORKDIR /app
 COPY package*.json ./
 RUN npm install
 
-RUN npx prisma generate
-
 COPY . .
 RUN npm run build
 EXPOSE 4000
-CMD ["node", "dist/main"]
+# CMD ["node", "dist/main"]
+CMD ["npm", "run", "start:migrate"]
