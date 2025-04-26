@@ -4,17 +4,14 @@ import { ServeStaticModule } from "@nestjs/serve-static";
 import { join } from "path";
 import { path } from "app-root-path";
 
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-
 import { AuthModule } from "./auth/auth.module";
 import { PrismaModule } from "./prisma/prisma.module";
-import { RoomService } from './room/room.service';
-import { RoomController } from './room/room.controller';
-import { RoomModule } from './room/room.module';
-import { BookingController } from './booking/booking.controller';
-import { BookingService } from './booking/booking.service';
-import { BookingModule } from './booking/booking.module';
+import { RoomService } from "./room/room.service";
+import { RoomController } from "./room/room.controller";
+import { RoomModule } from "./room/room.module";
+import { BookingController } from "./booking/booking.controller";
+import { BookingService } from "./booking/booking.service";
+import { BookingModule } from "./booking/booking.module";
 
 @Module({
   imports: [
@@ -28,7 +25,7 @@ import { BookingModule } from './booking/booking.module';
     RoomModule,
     BookingModule,
   ],
-  controllers: [AppController, RoomController, BookingController],
-  providers: [AppService, RoomService, BookingService],
+  controllers: [RoomController, BookingController],
+  providers: [RoomService, BookingService],
 })
 export class AppModule {}
