@@ -169,6 +169,10 @@ const config = {
       {
         "fromEnvVar": null,
         "value": "linux-arm64-openssl-3.0.x"
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -195,8 +199,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"linux-arm64-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  password  String\n  roles     Role[]   @default([USER])\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"update_at\")\n}\n\nmodel Room {\n  id          String    @id @default(uuid())\n  name        String\n  capacity    Int\n  location    String\n  description String?\n  bookings    Booking[]\n  createdAt   DateTime  @default(now()) @map(\"created_at\")\n  updatedAt   DateTime  @updatedAt @map(\"update_at\")\n}\n\nmodel Booking {\n  id        String   @id @default(uuid())\n  roomId    String\n  userId    String\n  startTime DateTime\n  endTime   DateTime\n  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"update_at\")\n}\n",
-  "inlineSchemaHash": "c82350b9a46412a239ec962b430267f4603225ce5b32dda6bc4476705d38dc43",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"../generated/prisma\"\n  binaryTargets = [\"native\", \"linux-arm64-openssl-3.0.x\", \"debian-openssl-3.0.x\"]\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\nmodel User {\n  id        String   @id @default(uuid())\n  email     String   @unique\n  password  String\n  roles     Role[]   @default([USER])\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"update_at\")\n}\n\nmodel Room {\n  id          String    @id @default(uuid())\n  name        String\n  capacity    Int\n  location    String\n  description String?\n  bookings    Booking[]\n  createdAt   DateTime  @default(now()) @map(\"created_at\")\n  updatedAt   DateTime  @updatedAt @map(\"update_at\")\n}\n\nmodel Booking {\n  id        String   @id @default(uuid())\n  roomId    String\n  userId    String\n  startTime DateTime\n  endTime   DateTime\n  room      Room     @relation(fields: [roomId], references: [id], onDelete: Cascade)\n  createdAt DateTime @default(now()) @map(\"created_at\")\n  updatedAt DateTime @updatedAt @map(\"update_at\")\n}\n",
+  "inlineSchemaHash": "21eab2c4c78636d893bae50d2092a290eaee12a7d150cd5b89b0a1b5ebad3910",
   "copyEngine": true
 }
 
@@ -241,6 +245,10 @@ path.join(process.cwd(), "generated/prisma/libquery_engine-darwin-arm64.dylib.no
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-linux-arm64-openssl-3.0.x.so.node");
 path.join(process.cwd(), "generated/prisma/libquery_engine-linux-arm64-openssl-3.0.x.so.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "generated/prisma/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "generated/prisma/schema.prisma")
