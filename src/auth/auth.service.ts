@@ -28,7 +28,7 @@ export class AuthService {
 
     if (oldUser) {
       throw new BadRequestException(
-        "User with email is already in the system!",
+        "Пользователь с адресом электронной почты уже есть в системе!",
       );
     }
 
@@ -67,7 +67,7 @@ export class AuthService {
     const isValidUser = user && (await compare(password, user.password));
 
     if (!isValidUser) {
-      throw new UnauthorizedException("Incorrect login or password!");
+      throw new UnauthorizedException("Неверный логин или пароль!");
     }
 
     return user;
