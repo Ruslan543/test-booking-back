@@ -24,12 +24,12 @@ COPY . .
 
 # Generate Prisma client
 RUN npx prisma generate
-RUN npx prisma migrate deploy
 
 # Build the application
 RUN npm run build
 
 # RUN npx prisma migrate deploy
+RUN npx prisma migrate deploy
 
 # Expose the application port
 EXPOSE 4000
