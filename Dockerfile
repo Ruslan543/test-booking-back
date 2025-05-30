@@ -29,10 +29,9 @@ RUN npx prisma generate
 RUN npm run build
 
 # RUN npx prisma migrate deploy
-RUN npx prisma migrate deploy
 
 # Expose the application port
 EXPOSE 4000
 
 # On container start: run migrations then launch the app
-CMD ["node", "dist/main"]
+CMD ["sh", "-c", "npx prisma migrate deploy && node dist/main"]
