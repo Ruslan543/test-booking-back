@@ -24,6 +24,7 @@ COPY . .
 
 # Generate Prisma client
 RUN npx prisma generate
+RUN npx prisma migrate deploy
 
 # Build the application
 RUN npm run build
@@ -34,4 +35,4 @@ RUN npm run build
 EXPOSE 4000
 
 # On container start: run migrations then launch the app
-CMD ["sh", "-c", "npx prisma generate && npx prisma migrate deploy && node dist/main"]
+CMD ["node", "dist/main"]
